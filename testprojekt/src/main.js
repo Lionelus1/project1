@@ -1,6 +1,7 @@
-import './assets/main.css'
+import { createApp } from 'vue';
+import App from './App.vue';  // Импортируем корневой компонент App.vue
+import router from './router';  // Импортируем настройки маршрутов
 
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
+createApp(App)
+  .use(router)  // Подключаем Vue Router
+  .mount('#app');  // Монтируем приложение

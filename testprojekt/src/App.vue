@@ -1,15 +1,22 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';  // Импортируем useRouter для навигации
 
 // Переменные для логина и пароля
 const login = ref('');
 const password = ref('');
+
+// Создаем экземпляр маршрутизатора
+const router = useRouter();
 
 // Функция, которая срабатывает при нажатии кнопки
 const handleSubmit = () => {
   console.log('Логин:', login.value);
   console.log('Пароль:', password.value);
   alert(`Логин: ${login.value}, Пароль: ${password.value}`);
+
+  // Переход на страницу Dashboard с логином в query параметре
+  router.push({ name: 'Dashboard', query: { login: login.value } });
 };
 </script>
 
