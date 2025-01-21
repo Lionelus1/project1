@@ -1,60 +1,97 @@
 <script setup>
 import { ref } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-import TheWelcome from './components/TheWelcome.vue';
-import Button from 'primevue/button'; // Импортируем компонент Button
 
-// Переменная для отображения в шаблоне
-const message = ref('Hello, PrimeVue!');
+// Переменные для логина и пароля
+const login = ref('');
+const password = ref('');
+
+// Функция, которая срабатывает при нажатии кнопки
+const handleSubmit = () => {
+  console.log('Логин:', login.value);
+  console.log('Пароль:', password.value);
+  alert(`Логин: ${login.value}, Пароль: ${password.value}`);
+};
 </script>
 
 <template>
-  <div>
-    <h1>Пример кнопки PrimeVue</h1>
-    <Button label="Нажми меня" icon="pi pi-check" /> <!-- Используем компонент Button -->
-  </div>
-
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="225" height="225" />
-
-    <div class="wrapper">
-      <HelloWorld msg="Great!" />
+  <div class="container">
+    <!-- Блок с изображением -->
+    <div class="image-container">
+      <img src="/images/serve.png" alt="Описание картинки" />
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-    <section>
-      <h2>{{ message }}</h2> <!-- Выводим переменную message -->
-    </section>
-  </main>
+    <!-- Блок с формой -->
+    <div class="form-container">
+      <!-- Поле для ввода логина -->
+      <label for="login">Логин:</label>
+      <input type="text" id="login" v-model="login" placeholder="Введите логин" />
+
+      <!-- Поле для ввода пароля -->
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" v-model="password" placeholder="Введите пароль" />
+
+      <!-- Кнопка -->
+      <button @click="handleSubmit">Войти</button>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+/* Общий контейнер */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Центрирование по высоте экрана */
 }
 
-.logo {
+/* Стили для картинки */
+.image-container img {
+  width: 300px; /* Установите нужный размер */
+  height: auto; /* Сохраняйте пропорции изображения */
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto 20px; /* Центрирование и отступ от формы */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+/* Центрирование всего контейнера с формой */
+.form-container {
+  display: flex;
+  flex-direction: column; /* Элементы располагаются по вертикали */
+  align-items: center; /* Центрирование по горизонтали */
+  text-align: center;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+/* Стили для меток */
+label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+/* Стили для текстовых полей */
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Стили для кнопки */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 </style>
