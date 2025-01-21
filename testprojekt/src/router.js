@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import LoginPage from './components/LoginPage.vue'; // Исправленный путь
-import DashboardPage from './components/DashboardPage.vue'; // Путь к компоненту Dashboard
+import LoginPage from './components/LoginPage.vue'; // Убедитесь, что путь правильный
+import DashboardPage from './components/DashboardPage.vue'; // Пустая страница Dashboard
 
 const routes = [
   {
     path: '/',
-    name: 'Login', // Страница логина
-    component: LoginPage, // Используем компонент напрямую
+    name: 'Login',
+    component: LoginPage, // Компонент для логина
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: DashboardPage,  // Путь к пустой странице Dashboard
+    component: DashboardPage, // Пустая страница Dashboard
   }
 ];
 
